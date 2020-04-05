@@ -10,7 +10,6 @@ from pandas.tseries.offsets import BDay
 class capm:
     def __init__(self, tickers):
         self.tickers = list(tickers)
-        self.shift_beta = 252
         self.bench = '^BVSP'
         if self.bench not in tickers: self.tickers.append(self.bench)
         sp = str(date.today()-BDay(1))[0:10].split('-')
@@ -55,4 +54,4 @@ class capm:
         colunas = [self.tickers[i] for i in range(len(self.tickers)-1)]
         dados = pd.DataFrame(data=lista_betas, columns=colunas)
         dados.index+=1
-        return dados
+        return dados    
