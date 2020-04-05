@@ -2,8 +2,8 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import lib_yahoo as ly
-from pricer import bmf
+from lib_yahoo import yahoo
+from baixa_curvas import bmf
 from datetime import date
 from pandas.tseries.offsets import BDay
 
@@ -20,7 +20,7 @@ class capm:
         """
         Calcula os betas das ações dados o shift de dias úteis para uso de dados e o slice de períodos
         """
-        obj = ly.yahoo(self.tickers)
+        obj = yahoo(self.tickers)
         if download==True:
             obj._download_files()
         self.df = obj._consolidate_dfs()[::periods]
